@@ -25,7 +25,7 @@
 
 ---
 
-번들의 최초 진입 파일입니다. 작성 방법은 [sopia/index.js](./index.md)와 같습니다.
+번들의 최초 진입 파일입니다. 작성 방법은 [sopia/index.js](./readme.md)와 같습니다.
 
 <br><br>
 
