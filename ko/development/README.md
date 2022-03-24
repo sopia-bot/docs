@@ -12,8 +12,6 @@
 
 ## 폴더 구조
 
----
-
 ### SOPIA 폴더
 
 
@@ -36,8 +34,6 @@
 
 ## 이벤트 목록
 
----
-
 소피아 3의 코드모듈은 [cjs](https://ko.wikipedia.org/wiki/CommonJS) 형식을 사용합니다.
 
 각 폴더의 `index.js` 파일에서 추출된 함수들을 기반으로 스푼의 소켓을 받게 되면 해당 이벤트 함수를 호출합니다.
@@ -52,10 +48,10 @@
 <br><br>
 ```js
 exports.live_message = (evt /* LiveMessageSocket */, sock /* LiveSocket */)  => {
-	const message = evt.update_component.message.value;
-	if ( message === 'ping' ) {
-		sock.message('pong!');
-	}
+  const message = evt.update_component.message.value;
+  if ( message === 'ping' ) {
+    sock.message('pong!');
+  }
 }
 ```
 <br><br>
@@ -63,14 +59,13 @@ exports.live_message = (evt /* LiveMessageSocket */, sock /* LiveSocket */)  => 
 <br><br>
 ```js
 exports.live_join = (evt /* LiveJoinSocket */, sock /* LiveSocket */)  => {
-	sock.message(`Hello. ${evt.data.author.nickname}!`)
+  sock.message(`Hello. ${evt.data.author.nickname}!`)
 }
 ```
 
 <br><br>
 
 ## 노드 모듈
----
 
 Node.JS가 지원하는 모듈을 사용할 수 있습니다.
 
@@ -87,27 +82,25 @@ const path = window.require('path');
 const TARGET_PATH = path.join(__dirname, 'file.txt');
 
 exports.live_message = (evt /* LiveMessageSocket */, sock /* LiveSocket */)  => {
-	const message = evt.update_component.message.value;
-	if ( message === '.쓰기' ) {
-		const nickname = evt.data.author.nickname;
-		fs.writeFileSync(TARGET_PATH, nickname, 'utf8');
-		sock.message(`파일을 썼습니다. 작성자: ${nickname}`);
-	} else if ( message === '.읽기' ) {
-		if ( fs.existsSync(TARGET_PATH) ) {
-			const nickname = fs.readFileSync(TARGET_PATH, 'utf8');
-			sock.message(`파일을 읽었습니다. 내용: ${nickname}`);
-		} else {
-			sock.message('읽을 파일이 없습니다.');
-		}
-	}
+  const message = evt.update_component.message.value;
+  if ( message === '.쓰기' ) {
+    const nickname = evt.data.author.nickname;
+    fs.writeFileSync(TARGET_PATH, nickname, 'utf8');
+    sock.message(`파일을 썼습니다. 작성자: ${nickname}`);
+  } else if ( message === '.읽기' ) {
+    if ( fs.existsSync(TARGET_PATH) ) {
+      const nickname = fs.readFileSync(TARGET_PATH, 'utf8');
+      sock.message(`파일을 읽었습니다. 내용: ${nickname}`);
+    } else {
+      sock.message('읽을 파일이 없습니다.');
+    }
+  }
 }
 ```
 
 <br><br>
 
 ## Sopia API
-
----
 
 스푼의 직접적인 정보를 가져오려면 [sopia-core](https://github.com/sopia-bot/sopia-core) 를 사용해 API를 호출할 수 있습니다.
 
@@ -116,13 +109,13 @@ exports.live_message = (evt /* LiveMessageSocket */, sock /* LiveSocket */)  => 
 언/팔로우 예제
 ```js
 exports.live_message = async (evt /* LiveMessageSocket */, sock /* LiveSocket */)  => {
-	const message = evt.update_component.message.value;
-	if ( message === '.팔로우' ) {
-		await window.$sopia.api.users.follow(evt.data.author);
-		sock.message(`${evt.data.author.nickname} 님을 팔로우했습니다.`);
-	} else if ( message === '.언팔로우' ) {
-		await window.$sopia.api.users.unfollow(evt.data.author);
-		sock.message(`${evt.data.author.nickname} 님을 언팔로우했습니다.`);
-	}
+  const message = evt.update_component.message.value;
+  if ( message === '.팔로우' ) {
+    await window.$sopia.api.users.follow(evt.data.author);
+    sock.message(`${evt.data.author.nickname} 님을 팔로우했습니다.`);
+  } else if ( message === '.언팔로우' ) {
+    await window.$sopia.api.users.unfollow(evt.data.author);
+    sock.message(`${evt.data.author.nickname} 님을 언팔로우했습니다.`);
+  }
 }
 ```
