@@ -25,7 +25,7 @@
 
 ---
 
-번들의 최초 진입 파일입니다. 작성 방법은 [sopia/index.js](./readme.md)와 같습니다.
+번들의 최초 진입 파일입니다. 작성 방법은 [sopia/index.js](/ko/development/)와 같습니다.
 
 <br><br>
 
@@ -39,9 +39,9 @@
 
 ```json
 {
-	"name": "번들 이름",
-	"version": "버전 정보",
-	"description": "한 줄 설명"
+  "name": "번들 이름",
+  "version": "버전 정보",
+  "description": "한 줄 설명"
 }
 ```
 
