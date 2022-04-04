@@ -4,5 +4,5 @@
 
 ##### 소피아 단톡방 링크: [https://open.kakao.com/o/gG73EYdd]
 
-##### 소피아 디스코드 링크: [https://discord.gg/BQbU7KxEnM]
+##### 소피아 깃허브 링크: [https://github.com/sopia-bot/docs]
 
